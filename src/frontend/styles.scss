@@ -1,0 +1,116 @@
+$mobile-max-width: 600px;
+$tablet-max-width: 1024px;
+
+body.ea-block-styles {
+	.ea-item-slider-container {
+
+		.ea-item-slider-control-prev,
+		.ea-item-slider-control-next {
+			cursor: pointer;
+
+			&:focus-visible {
+				border: 1px solid blue;
+			}
+
+		}
+
+		.ea-item-slider {
+
+			&.wp-block-columns,
+			&.wp-block-gallery,
+			&.wp-block-group.wp-version-below-6>.wp-block-group__inner-container,
+			&.wp-block-group:not(.wp-version-below-6) {
+				width: 100%;
+				display: grid;
+				grid-auto-columns: calc(100%);
+
+				grid-auto-flow: column;
+				overflow-x: scroll;
+				overflow-y: visible;
+				padding-bottom: 15px;
+				overscroll-behavior-x: contain;
+				scroll-snap-type: x mandatory;
+
+				&::-webkit-scrollbar {
+					width: 0 !important;
+					display: none !important
+				}
+
+				-ms-overflow-style: none;
+				/* IE and Edge */
+				scrollbar-width: none;
+				/* Firefox */
+
+				gap: 20px;
+				height: auto;
+
+				>* {
+					scroll-snap-align: start;
+					margin: 0;
+					width: 100% !important;
+				}
+
+			}
+
+			@media (min-width: $mobile-max-width) {
+
+				&.ea-item-slider-2-cards,
+				&.ea-item-slider-3-cards,
+				&.ea-item-slider-4-cards {
+					grid-auto-columns: calc(49.5% - 10px);
+
+					&.wp-version-below-6>.wp-block-group__inner-container {
+						grid-auto-columns: calc(49.5% - 10px);
+					}
+				}
+
+
+			}
+
+			@media (min-width: $tablet-max-width) {
+
+				&.ea-item-slider-3-cards {
+					grid-auto-columns: minmax(calc(33.1% - 10px), 320px) !important;
+
+					&.wp-version-below-6>.wp-block-group__inner-container {
+						grid-auto-columns: minmax(calc(33.1% - 10px), 320px);
+					}
+				}
+
+				&.ea-item-slider-4-cards {
+					grid-auto-columns: minmax(calc(25% - 15px), 320px) !important;
+
+					&.wp-version-below-6>.wp-block-group__inner-container {
+						grid-auto-columns: minmax(calc(25% - 15px), 320px) !important;
+					}
+				}
+			}
+
+
+		}
+	}
+
+	.ea-block-accordion {
+		overflow: hidden;
+
+		.ea-block-accordion-content {
+			max-height: 0;
+			transition: all .35s;
+			overflow: hidden;
+		}
+
+		.ea-block-accordion-btn {
+			cursor: pointer;
+
+			&:focus-visible {
+				border: 1px solid blue;
+			}
+		}
+
+		&.ea-active {
+			.ea-block-accordion-content {
+				max-height: 100vh;
+			}
+		}
+	}
+}
